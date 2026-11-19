@@ -7,6 +7,7 @@ Home page for my browser puzzle games with built-in AI solvers: **https://mrdada
 | Auto-2048 | https://mrdadado.github.io/Auto-2048/ | [MrDaDaDo/Auto-2048](https://github.com/MrDaDaDo/Auto-2048) |
 | Auto-Minesweeper | https://mrdadado.github.io/Auto-Minesweeper/ | [MrDaDaDo/Auto-Minesweeper](https://github.com/MrDaDaDo/Auto-Minesweeper) |
 | Auto-Sudoku | https://mrdadado.github.io/Auto-Sudoku/ | [MrDaDaDo/Auto-Sudoku](https://github.com/MrDaDaDo/Auto-Sudoku) |
+| Auto-Blocks | https://mrdadado.github.io/Auto-Blocks/ | [MrDaDaDo/Auto-Blocks](https://github.com/MrDaDaDo/Auto-Blocks) |
 
 ## Adding a new game
 

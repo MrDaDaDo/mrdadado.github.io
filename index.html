@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Auto Games – Classic Puzzle Games with AI Autoplay Solvers</title>
-<meta name="description" content="Free browser puzzle games that can play themselves: 2048, Minesweeper and Sudoku, each with a built-in AI solver, hints and zero dependencies. No ads, no install.">
+<meta name="description" content="Free browser puzzle games that can play themselves: 2048, Minesweeper, Sudoku and a falling-block puzzle, each with a built-in AI solver, hints and zero dependencies. No ads, no install.">
 <link rel="canonical" href="https://mrdadado.github.io/">
 <meta name="theme-color" content="#f3f5f7">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -14,14 +14,14 @@
 <meta property="og:site_name" content="Auto Games">
 <meta property="og:url" content="https://mrdadado.github.io/">
 <meta property="og:title" content="Auto Games – Classic Puzzle Games with AI Autoplay Solvers">
-<meta property="og:description" content="2048, Minesweeper and Sudoku in your browser, each with an AI that can play it for you.">
+<meta property="og:description" content="2048, Minesweeper, Sudoku and a falling-block puzzle in your browser, each with an AI that can play it for you.">
 <meta property="og:image" content="https://mrdadado.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="640">
-<meta property="og:image:alt" content="Auto Games: 2048, Minesweeper and Sudoku with AI autoplay">
+<meta property="og:image:alt" content="Auto Games: 2048, Minesweeper, Sudoku and a falling-block puzzle with AI autoplay">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Auto Games – Classic Puzzle Games with AI Autoplay Solvers">
-<meta name="twitter:description" content="2048, Minesweeper and Sudoku in your browser, each with an AI that can play it for you.">
+<meta name="twitter:description" content="2048, Minesweeper, Sudoku and a falling-block puzzle in your browser, each with an AI that can play it for you.">
 <meta name="twitter:image" content="https://mrdadado.github.io/assets/og-image.png">
 
 <script type="application/ld+json">
@@ -30,13 +30,14 @@
   "@type": "CollectionPage",
   "name": "Auto Games",
   "url": "https://mrdadado.github.io/",
-  "description": "Free browser puzzle games with built-in AI solvers: 2048, Minesweeper and Sudoku.",
+  "description": "Free browser puzzle games with built-in AI solvers: 2048, Minesweeper, Sudoku and a falling-block puzzle.",
   "inLanguage": ["en", "zh-Hant", "zh-Hans", "ja", "ko"],
   "author": { "@type": "Person", "name": "MrDaDaDo", "url": "https://github.com/MrDaDaDo" },
   "hasPart": [
     { "@type": "WebApplication", "name": "Auto-2048", "url": "https://mrdadado.github.io/Auto-2048/", "applicationCategory": "GameApplication" },
     { "@type": "WebApplication", "name": "Auto-Minesweeper", "url": "https://mrdadado.github.io/Auto-Minesweeper/", "applicationCategory": "GameApplication" },
-    { "@type": "WebApplication", "name": "Auto-Sudoku", "url": "https://mrdadado.github.io/Auto-Sudoku/", "applicationCategory": "GameApplication" }
+    { "@type": "WebApplication", "name": "Auto-Sudoku", "url": "https://mrdadado.github.io/Auto-Sudoku/", "applicationCategory": "GameApplication" },
+    { "@type": "WebApplication", "name": "Auto-Blocks", "url": "https://mrdadado.github.io/Auto-Blocks/", "applicationCategory": "GameApplication" }
   ]
 }
 </script>
@@ -70,7 +71,7 @@
   }
   .intro { font-size: 18px; line-height: 1.6; margin: 0 0 24px; }
 
-  .games { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .games { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .game {
     display: flex; flex-direction: column;
     background: #fff; border-radius: 10px; overflow: hidden;
@@ -155,6 +156,17 @@
         </div>
       </div>
     </article>
+    <article class="game" style="--accent: #5562c4">
+      <a href="/Auto-Blocks/"><img src="https://mrdadado.github.io/Auto-Blocks/assets/og-image.png" alt="Auto-Blocks" loading="lazy"></a>
+      <div class="game-body">
+        <h2>Auto-Blocks</h2>
+        <p data-i18n="desc_blocks">A falling-block puzzle with an AI that stacks and clears lines on its own. Tune its lookahead and weights, or ask it where to put the current piece.</p>
+        <div class="links">
+          <a class="play" href="/Auto-Blocks/" data-i18n="play">▶ Play</a>
+          <a class="source" href="https://github.com/MrDaDaDo/Auto-Blocks">GitHub</a>
+        </div>
+      </div>
+    </article>
   </div>
   <section class="about">
     <h2 data-i18n="aboutTitle">About</h2>
@@ -175,6 +187,7 @@
       desc_2048: '2048 with a tunable Expectimax AI. Change the search depth and heuristic weights and see how far it gets.',
       desc_mines: 'Minesweeper with a solver that computes the exact mine probability of every cell and tracks its own win rate.',
       desc_sudoku: 'Sudoku with an AI that solves like a person, one technique at a time. Six difficulty levels from Beginner to Hell, or type in any puzzle and let it solve it.',
+      desc_blocks: 'A falling-block puzzle with an AI that stacks and clears lines on its own. Tune its lookahead and weights, or ask it where to put the current piece.',
       aboutTitle: 'About',
       about: `Every game is free, open source and written in plain HTML and JavaScript with zero dependencies: no ads, no install, no build step. Source code on ${REPO}.`,
     },
@@ -184,6 +197,7 @@
       desc_2048: '2048 搭配可調整的 Expectimax AI。調整搜尋深度與評估權重，看它能玩到多大。',
       desc_mines: '踩地雷搭配求解器，算出每一格的精確地雷機率，並統計 AI 自己的勝率。',
       desc_sudoku: '數獨搭配像人一樣解題的 AI，一步用一種技巧。從入門到地獄共六種難度，也可以輸入任何題目讓它解。',
+      desc_blocks: '落下型方塊消除遊戲，搭配會自己堆疊、消行的 AI。可以調整預看塊數與評分權重，或請它提示這一塊該放哪裡。',
       aboutTitle: '關於',
       about: `所有遊戲都免費、開源，以純 HTML 與 JavaScript 寫成，零相依：沒有廣告、不用安裝、不用建置。原始碼在 ${REPO}。`,
     },
@@ -193,6 +207,7 @@
       desc_2048: '2048 搭配可调整的 Expectimax AI。调整搜索深度与评估权重，看它能玩到多大。',
       desc_mines: '扫雷搭配求解器，算出每一格的精确地雷概率，并统计 AI 自己的胜率。',
       desc_sudoku: '数独搭配像人一样解题的 AI，一步用一种技巧。从入门到地狱共六种难度，也可以输入任何题目让它解。',
+      desc_blocks: '下落式方块消除游戏，搭配会自己堆叠、消行的 AI。可以调整预看块数与评分权重，或让它提示这一块该放哪里。',
       aboutTitle: '关于',
       about: `所有游戏都免费、开源，以纯 HTML 与 JavaScript 写成，零依赖：没有广告、不用安装、不用构建。源代码在 ${REPO}。`,
     },
@@ -202,6 +217,7 @@
       desc_2048: '調整可能な Expectimax AI を搭載した 2048。探索の深さや評価の重みを変えて、どこまで行けるか試せます。',
       desc_mines: '各マスの正確な地雷確率を計算するソルバーを搭載したマインスイーパー。AI の勝率も記録します。',
       desc_sudoku: '人と同じように、一手ずつ解法を使って解く AI を搭載した数独。入門から地獄まで6段階の難易度があり、好きな問題を入力して解かせることもできます。',
+      desc_blocks: '自分でブロックを積んでラインを消す AI を搭載した落ち物ブロックパズル。先読みの個数や評価の重みを調整したり、今のブロックの置き場所を教えてもらえます。',
       aboutTitle: 'このサイトについて',
       about: `すべてのゲームは無料・オープンソースで、素の HTML と JavaScript だけで書かれています。広告なし、インストール不要、ビルド不要。ソースコードは ${REPO} にあります。`,
     },
@@ -211,6 +227,7 @@
       desc_2048: '조정 가능한 Expectimax AI가 들어 있는 2048. 탐색 깊이와 평가 가중치를 바꿔 어디까지 가는지 확인해 보세요.',
       desc_mines: '모든 칸의 정확한 지뢰 확률을 계산하는 솔버가 들어 있는 지뢰찾기. AI의 승률도 기록합니다.',
       desc_sudoku: '사람처럼 한 수에 한 가지 기법으로 푸는 AI가 들어 있는 스도쿠. 입문부터 지옥까지 여섯 단계의 난이도가 있으며, 원하는 문제를 입력해 풀게 할 수도 있습니다.',
+      desc_blocks: '스스로 블록을 쌓고 줄을 지우는 AI가 들어 있는 낙하 블록 퍼즐. 미리 보는 블록 수와 평가 가중치를 조정하거나, 현재 블록을 어디에 놓을지 물어볼 수 있습니다.',
       aboutTitle: '소개',
       about: `모든 게임은 무료 오픈 소스이며 순수 HTML과 JavaScript로만 작성되었습니다. 광고도, 설치도, 빌드도 필요 없습니다. 소스 코드는 ${REPO}에 있습니다.`,
     },
