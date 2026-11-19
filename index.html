@@ -40,6 +40,15 @@
   ]
 }
 </script>
+<script>
+  // 在畫面出現前決定主題：使用者選過就用選的，否則跟隨系統設定
+  (() => {
+    let saved = null;
+    try { saved = localStorage.getItem('autoGamesTheme'); } catch { /* 忽略 */ }
+    const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  })();
+</script>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -89,13 +98,27 @@
     h1 { font-size: 34px; }
     .games { grid-template-columns: minmax(0, 1fr); }
   }
+  #themeToggle { padding: 6px 10px; font-size: 16px; border: none; border-radius: 6px; cursor: pointer; background: #e1e6eb; }
+  .header-actions { display: flex; gap: 8px; align-items: center; }
+
+  /* 深色主題 */
+  [data-theme="dark"] body { background: #14181d; color: #c4ccd4; }
+  [data-theme="dark"] h1, [data-theme="dark"] .game h2 { color: #eef2f6; }
+  [data-theme="dark"] select, [data-theme="dark"] #themeToggle { background: #232a32; color: #c4ccd4; }
+  [data-theme="dark"] .game { background: #1d232a; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); }
+  [data-theme="dark"] .game img { background: #232a32; }
+  [data-theme="dark"] .source { color: #93a0ad; }
+  [data-theme="dark"] .about a { color: #7fa6dc; }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
     <h1>Auto Games</h1>
-    <select id="langSelect" aria-label="Language"></select>
+    <div class="header-actions">
+      <button id="themeToggle" aria-label="Toggle dark theme"></button>
+      <select id="langSelect" aria-label="Language"></select>
+    </div>
   </header>
   <p class="intro" data-i18n-html="intro">Classic puzzle games with an <b>AI that plays them for you</b>. Play yourself, ask for a hint, or sit back and watch.</p>
   <div class="games">
@@ -237,6 +260,35 @@
   });
   apply();
 })();
+</script>
+<script>
+  // 主題切換：選擇存在 localStorage，同網域的其他 Auto Games 共用
+  (() => {
+    const KEY = 'autoGamesTheme';
+    const COLORS = { light: '#f3f5f7', dark: '#14181d' };
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const meta = document.querySelector('meta[name="theme-color"]');
+    const query = matchMedia('(prefers-color-scheme: dark)');
+    const show = () => {
+      btn.textContent = root.dataset.theme === 'dark' ? '☀️' : '🌙';
+      if (meta) meta.content = COLORS[root.dataset.theme];
+    };
+    btn.addEventListener('click', () => {
+      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem(KEY, root.dataset.theme); } catch { /* 忽略 */ }
+      show();
+    });
+    // 沒有手動選過時，系統設定改變就跟著變
+    query.addEventListener('change', () => {
+      let saved = null;
+      try { saved = localStorage.getItem(KEY); } catch { /* 忽略 */ }
+      if (saved) return;
+      root.dataset.theme = query.matches ? 'dark' : 'light';
+      show();
+    });
+    show();
+  })();
 </script>
 </body>
 </html>
